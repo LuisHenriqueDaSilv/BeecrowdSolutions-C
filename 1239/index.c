@@ -1,13 +1,16 @@
-// Presentation error (100%)
-
 #include <stdio.h>
 #include <string.h>
 
 int main(){
-  char input[51];
-  int italic,bold; 
-  while(scanf(" %[^\n]s", input) != EOF){
+  char input[55];
+  int italic,bold;
+  while(fgets(input, 55, stdin)){
     int inputlength = strlen(input);
+    if (inputlength > 0 && input[inputlength - 1] == '\n') {
+      input[inputlength - 1] = '\0';
+      inputlength--;
+    }
+
     italic = 0;
     bold = 0;
     for(int i =0; i<inputlength; i++){
@@ -31,7 +34,7 @@ int main(){
         printf("%c", input[i]);
       }
     }
-    printf(" \n");
+    printf("\n");
   }
   return 0;
 }
